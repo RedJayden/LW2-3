@@ -85,31 +85,39 @@ LW2-3/
 
 ## 4. 배포 방법 A — 사내 공유 드라이브 (권장)
 
+> **배포 위치: `X:\300.LW2-3`** — 패키지가 이미 생성되어 있습니다. 신규 팀원은 [4-2](#4-2-팀원-세팅-clone-직후-1회)만 수행하면 됩니다.
+
 CEF는 공식 배포본을 그대로 쓸 수 없습니다. `libcef_dll_wrapper.lib`(Debug 94MB / Release 80MB)는 배포본에 **소스만 포함**되어 있어 CMake + Visual Studio로 직접 빌드해야 합니다. 팀원마다 이 과정을 반복하면 빌드 옵션 차이로 링크 오류가 발생할 수 있으므로, **한 번 빌드한 결과물을 공유 드라이브로 배포**하는 방식이 가장 안전합니다.
 
 ### 4-1. 배포 담당자: 패키지 생성 (최초 1회 / SDK 갱신 시)
 
-현재 정상 동작하는 로컬 폴더를 그대로 압축합니다.
+현재 정상 동작하는 로컬 폴더를 그대로 압축합니다. .NET `ZipFile` API를 사용하며, `Compress-Archive`보다 빠르고(각 1분 이내) 항목명 인코딩을 UTF-8로 명시할 수 있습니다.
 
 ```powershell
-cd D:\000.Git_Project\LW2-3
+Add-Type -AssemblyName System.IO.Compression.FileSystem
+$L = [System.IO.Compression.CompressionLevel]::Optimal
+$U = [System.Text.Encoding]::UTF8
 
-# CEF 패키지
-Compress-Archive -Path external\cef `
-  -DestinationPath "\\사내NAS\공유\LW2-3\deps\cef_141.0.8_win64.zip" -Force
+# CEF 패키지 (zip 루트 = cef\)
+[System.IO.Compression.ZipFile]::CreateFromDirectory(
+  "D:\000.Git_Project\LW2-3\external",
+  "X:\300.LW2-3\cef_141.0.8_win64.zip", $L, $false, $U)
 
-# OpenCV 패키지
-Compress-Archive -Path VisionModule\FeatureLibrary\OpenCV `
-  -DestinationPath "\\사내NAS\공유\LW2-3\deps\opencv_4.12.0_vc16_x64.zip" -Force
+# OpenCV 패키지 (zip 루트 = OpenCV\)
+[System.IO.Compression.ZipFile]::CreateFromDirectory(
+  "D:\000.Git_Project\LW2-3\VisionModule\FeatureLibrary",
+  "X:\300.LW2-3\opencv_4.12.0_vc16_x64.zip", $L, $false, $U)
 ```
 
-> 1.5GB를 압축하므로 수 분 소요됩니다. 압축 없이 폴더 통째로 복사해두어도 무방합니다(오히려 배포가 빠름).
+> **압축 대상은 `cef` / `OpenCV` 의 _상위 폴더_ 입니다.** `includeBaseDirectory=$false` 와 조합되어 zip 루트가 `cef\` / `OpenCV\` 가 되며, 이래야 4-2의 `Expand-Archive` 경로와 맞습니다. (`external\`, `VisionModule\FeatureLibrary\` 하위에는 각각 해당 폴더 하나만 존재합니다.)
 
-권장 공유 드라이브 구조:
+> **`tar.exe` 는 사용하지 마세요.** Windows 기본 탑재 bsdtar는 zip 생성 시 항목명을 현재 로캘로 인코딩하며 UTF-8 옵션(`zip:encoding`)을 지원하지 않습니다. 실제로 `OpenCV – 4.12.0.txt`(en-dash 포함)가 `OpenCV ? 4.12.0.txt` 로 손상되어, 복원 시 `Expand-Archive` 가 해당 파일에서 "파일 이름 구문이 잘못되었습니다" 오류로 중단됩니다.
+
+공유 드라이브 구조:
 
 ```
-\\사내NAS\공유\LW2-3\deps\
-├─ README.txt                          (버전 · 적용 경로 안내)
+X:\300.LW2-3\
+├─ README.txt                          (버전 · 적용 경로 · 세팅 절차)
 ├─ cef_141.0.8_win64.zip
 └─ opencv_4.12.0_vc16_x64.zip
 ```
@@ -122,7 +130,7 @@ git clone https://github.com/RedJayden/LW2-3.git D:\000.Git_Project\LW2-3
 cd D:\000.Git_Project\LW2-3
 
 # 2) 공유 드라이브에서 의존성 복원
-$DEPS = "\\사내NAS\공유\LW2-3\deps"
+$DEPS = "X:\300.LW2-3"
 
 New-Item -ItemType Directory -Force -Path external, VisionModule\FeatureLibrary | Out-Null
 Expand-Archive -Path "$DEPS\cef_141.0.8_win64.zip"        -DestinationPath external -Force
