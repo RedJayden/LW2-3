@@ -30,6 +30,16 @@ git -C $Main @args
 if ($LASTEXITCODE -ne 0) { throw "git worktree remove 실패" }
 git -C $Main worktree prune
 
+# git worktree remove 는 junction 내부로 들어가지 않는 대신(원본 보호),
+# junction 링크와 그 부모 폴더를 남긴다 → 링크만 안전하게 해제 후 잔여 정리.
+# (rmdir 는 junction 을 링크로만 제거하며 대상 폴더를 건드리지 않음)
+if (Test-Path $Wt) {
+    foreach ($j in @("$Wt\external\cef", "$Wt\VisionModule\FeatureLibrary\OpenCV")) {
+        if (Test-Path $j) { cmd /c "rmdir `"$j`"" }
+    }
+    cmd /c "rmdir /S /Q `"$Wt`""
+}
+
 # 원본 SDK 무사 확인
 $ok = Test-Path "$Main\external\cef\lib\Release\libcef.dll",
                 "$Main\VisionModule\FeatureLibrary\OpenCV\build\x64\vc16\bin\opencv_world4120.dll"
