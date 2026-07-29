@@ -1,1 +1,0 @@
-import{y as e}from"./libs-DBeBaDTm.js";import"./vendor-B-OgD5aO.js";import"./ui-framework-Ct18Nptr.js";import"./graphics-libs-CwJq0qY1.js";import"./importFile-CJTC-ao4.js";import{t as i}from"./CameraView-FHqusQED.js";var r=e();function s(){return(0,r.jsx)("div",{className:"w-full h-full overflow-hidden relative",children:(0,r.jsx)(i,{})})}export{s as default};

@@ -7,5 +7,22 @@ node_modules/
 external/cef/
 VisionModule/FeatureLibrary/OpenCV/
 
+# ─────────────────────────────────────────────────────────────
+# 빌드 산출물 (docs/plans/Parallel_Claude_Sessions_Plan.md Phase 0)
+# ─────────────────────────────────────────────────────────────
+# Portal 웹 빌드 결과 — 커밋 금지, 필요 시 build-portal.bat 로 생성
+Portal/dist/
+
+# C++ OutDir($(SolutionDir)Bin\) 산출물 — 추적 유지 폴더 4개만 예외
+Bin/*
+!Bin/Config/
+!Bin/DLLS/
+!Bin/Image/
+!Bin/Recipe/
+
+# Visual Studio 로컬 상태
+.vs/
+*.user
+
 # Claude Code 로컬 설정 (개인별)
 .claude/settings.local.json

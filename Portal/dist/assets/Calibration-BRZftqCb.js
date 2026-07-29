@@ -1,1 +1,0 @@
-import{y as i}from"./libs-DBeBaDTm.js";import"./vendor-B-OgD5aO.js";import"./ui-framework-Ct18Nptr.js";import"./graphics-libs-CwJq0qY1.js";import"./importFile-CJTC-ao4.js";import{t}from"./CameraView-FHqusQED.js";var r=i();function n(){return(0,r.jsx)("div",{className:"h-full",children:(0,r.jsx)(t,{})})}export{n as default};

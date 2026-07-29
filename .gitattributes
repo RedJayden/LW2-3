@@ -1,0 +1,11 @@
+# MSBuild 프로젝트 파일 — 텍스트 병합 강제 (병렬 세션 충돌 시 충돌 마커 생성)
+# 근거: docs/plans/Parallel_Claude_Sessions_Plan.md Phase 0-3
+*.sln      text eol=crlf merge=text
+*.vcxproj  text eol=crlf merge=text
+*.filters  text eol=crlf merge=text
+*.props    text eol=crlf merge=text
+
+# Windows 스크립트는 CRLF 고정
+*.bat      text eol=crlf
+*.cmd      text eol=crlf
+*.ps1      text eol=crlf
