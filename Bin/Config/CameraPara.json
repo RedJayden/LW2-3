@@ -1,0 +1,58 @@
+{
+   "data": {
+      "cameras": [ {
+         "centerOffset": {
+            "x": 1653.687373445378,
+            "y": 1008.8317203361341
+         },
+         "device_id": "DA8413661",
+         "flip_dir": 0,
+         "id": 1,
+         "image_size": 12582912,
+         "name": "Scanner",
+         "pixel_size": 3.45,
+         "presets": [ {
+            "exposure_time": 30000,
+            "gain": 11,
+            "magnification": 20
+         }, {
+            "exposure_time": 5000,
+            "gain": 0,
+            "magnification": 50
+         } ],
+         "resolution": {
+            "depth": 8,
+            "height": 2048,
+            "width": 2448
+         },
+         "type": "POE_MONO",
+         "used": true,
+         "vendor": "HikRobot"
+      }, {
+         "device_id": "DA4800798",
+         "flip_dir": 0,
+         "id": 2,
+         "image_size": 12288000,
+         "name": "Object",
+         "pixel_size": 3.45,
+         "presets": [ {
+            "exposure_time": 35000,
+            "gain": 12,
+            "magnification": 20
+         }, {
+            "exposure_time": 3000,
+            "gain": 24,
+            "magnification": 50
+         } ],
+         "resolution": {
+            "depth": 8,
+            "height": 2048,
+            "width": 2448
+         },
+         "type": "POE_MONO",
+         "used": true,
+         "vendor": "HikRobot"
+      } ],
+      "system_version": "1.0"
+   }
+}

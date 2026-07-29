@@ -1,0 +1,51 @@
+/* 회전하는 컨테이너이자 가는 흰색 원 */
+.minimal-spinner {
+  width: 150px;
+  height: 150px;
+  position: relative;
+
+  /* 가는 흰색 원을 border로 표현 */
+  border: 2px solid white;
+  border-radius: 50%;
+
+  /* 회전 애니메이션 적용 */
+  animation: rotate 3s linear infinite;
+}
+
+/* 점(dot) 공통 스타일 */
+.minimal-dot {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  background-color: white;
+  border-radius: 50%;
+}
+
+/* === 수정된 부분 === */
+
+/* 첫 번째 점 위치 (왼쪽 중앙) */
+.dot-a {
+  top: 50%;
+  left: 0;
+  /* 점의 중심이 원의 선에 정확히 오도록 조정 */
+  transform: translate(-50%, -50%);
+}
+
+/* 두 번째 점 위치 (오른쪽 중앙) */
+.dot-b {
+  top: 50%;
+  right: 0;
+  /* 점의 중심이 원의 선에 정확히 오도록 조정 */
+  transform: translate(50%, -50%);
+}
+
+/* 회전 애니메이션 */
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}

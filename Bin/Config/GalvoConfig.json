@@ -1,0 +1,11 @@
+{
+   "barrelDistortionX": 0.05,
+   "barrelDistortionY": 0.025,
+   "correctSize": 120,
+   "hRatio": 0.662234,
+   "parallelogramDistortionX": 0,
+   "parallelogramDistortionY": 0,
+   "trapezoidalDistortionX": 0,
+   "trapezoidalDistortionY": 0,
+   "vRatio": 0.664961
+}

@@ -1,0 +1,418 @@
+{
+  "ipcVersion": "1.1.0",
+  "namespace": "app",
+  "channels": {
+    "app.quit": {
+      "args": {}
+    },
+    "app.window.close": {
+      "args": {}
+    },
+    "app.window.minimize": {
+      "args": {}
+    },
+    "app.window.maximizeToggle": {
+      "args": {}
+    },
+    "app.window.drag": {
+      "args": {}
+    },
+    "app.window.setState": {
+      "args": {
+        "state": "enum:maximized|minimized|restored"
+      }
+    },
+    "app.openMain": {
+      "args": {
+        "route": "string",
+        "show?": "enum:maximized|restored|normal"
+      }
+    },
+    "motion.homeAll": {
+      "args": {
+        "timeoutMs?": "number"
+      }
+    },
+    "motion.home": {
+      "args": {
+        "axis": "enum:X|Y|Z|A|C"
+      }
+    },
+    "motion.getPosition": {
+      "args": {
+        "axis?": "enum:X|Y|Z|A|C",
+        "position?": "number"
+      }
+    },
+    "cmd.motion.setServo": {
+      "request": {
+        "axis": "enum:X|Y|Z|A|C",
+        "state": "number"
+      },
+      "response": {
+        "ok": "boolean",
+        "message": "string"
+      }
+    },
+    "cmd.motion.resetAlarm": {
+      "request": {
+        "axis": "enum:X|Y|Z|A|C",
+        "type": "number"
+      },
+      "response": {
+        "ok": "boolean",
+        "message": "string"
+      }
+    },
+    "motion.jog.start": {
+      "args": {
+        "axis": "enum:X|Y|Z|A|C",
+        "dir": "enum:+|-",
+        "speed": "string"
+      }
+    },
+    "motion.jog.stop": {
+      "args": {
+        "axis": "enum:X|Y|Z|A|C"
+      }
+    },
+    "motion.setJogSpeed": {
+      "args": {
+        "speed": "enum:slow|mid|fast"
+      }
+    },
+    "motion.stop": {
+      "args": {}
+    },
+    "motion.moveRel": {
+      "args": {
+        "axis": "enum:X|Y|Z|A|C",
+        "distance": "number",
+        "speed?": "string"
+      }
+    },
+    "motion.moveAbs": {
+      "args": {
+        "axis": "enum:X|Y|Z|A|C",
+        "position": "number",
+        "speed?": "string"
+      }
+    },
+    "camera.start": {
+      "args": {
+        "id": "number",
+        "preview?": "boolean"
+      }
+    },
+    "camera.stop": {
+      "args": {
+        "id": "number"
+      }
+    },
+    "camera.setParams": {
+      "args": {
+        "id": "number",
+        "exposure?": "number",
+        "gain?": "number"
+      }
+    },
+    "camera.getRange": {
+      "args": {
+        "id": "number"
+      }
+    },
+    "camera.getParams": {
+      "args": {
+        "id": "number"
+      }
+    },
+    "cmd.gcode.write": {
+      "request": {
+        "jobId": "string",
+        "name": "string",
+        "lines": "string[]"
+      },
+      "response": {
+        "ok": "boolean",
+        "message": "string"
+      }
+    },
+    "cmd.gcode.run": {
+      "request": {
+        "jobId": "string",
+        "mode": "number"
+      },
+      "response": {
+        "ok": "boolean",
+        "message": "string"
+      }
+    },
+    "cmd.gcode.status": {
+      "request": {
+        "jobId": "string"
+      },
+      "response": {
+        "ok": "boolean",
+        "state": "string",
+        "currentLine": "number"
+      }
+    },
+    "cmd.moons.preset": {
+      "args": {
+        "payload": "enum:scanner_base|object_x20|object_x50"
+      }
+    },
+    "cmd.scanner.generate": {
+      "request": {
+        "commands": "ScannerCommand[]"
+      },
+      "response": {
+        "ok": "boolean",
+        "message": "string"
+      }
+    },
+    "cmd.scanner.run": {
+      "request": {
+        "mode": "number",
+        "scannerMarkSpeed?": "number"
+      },
+      "response": {
+        "ok": "boolean",
+        "message": "string"
+      }
+    },
+    "cmd.scanner.stop": {
+      "request": {},
+      "response": {
+        "ok": "boolean",
+        "message": "string"
+      }
+    },
+    "cmd.dialog.openImage": {
+      "request": {
+        "extensions?": "string"
+      },
+      "response": {
+        "ok": "boolean",
+        "data?": "string",
+        "path?": "string",
+        "message": "string"
+      }
+    },
+    "cmd.dialog.saveImage": {
+      "request": {
+        "data": "string",
+        "fileName?": "string"
+      },
+      "response": {
+        "ok": "boolean",
+        "message": "string"
+      }
+    },
+    "cmd.calibration.save": {
+      "request": {
+        "profile": "string",
+        "data": "any"
+      },
+      "response": {
+        "ok": "boolean",
+        "message": "string"
+      }
+    },
+    "cmd.calibration.load": {
+      "request": {
+        "profile": "string"
+      },
+      "response": {
+        "ok": "boolean",
+        "data": "any",
+        "message": "string"
+      }
+    },
+    "cmd.calibration.list": {
+      "request": {
+        "profile": "string"
+      },
+      "response": {
+        "ok": "boolean",
+        "list": "any[]",
+        "message": "string"
+      }
+    },
+    "cmd.calibration.rollback": {
+      "request": {
+        "profile": "string",
+        "filename": "string"
+      },
+      "response": {
+        "ok": "boolean",
+        "message": "string"
+      }
+    },
+    "cmd.calibration.delete": {
+      "request": {
+        "profile": "string",
+        "filename": "string"
+      },
+      "response": {
+        "ok": "boolean",
+        "message": "string"
+      }
+    },
+    "cmd.config.getCamera": {
+      "request": {},
+      "response": {
+        "ok": "boolean",
+        "data": "any",
+        "message": "string"
+      }
+    },
+    "cmd.config.setCamera": {
+      "request": {
+        "data": "any"
+      },
+      "response": {
+        "ok": "boolean",
+        "message": "string"
+      }
+    },
+    "cmd.config.getMotion": {
+      "request": {},
+      "response": {
+        "ok": "boolean",
+        "data": "any",
+        "message": "string"
+      }
+    },
+    "cmd.config.setMotion": {
+      "request": {
+        "data": "any"
+      },
+      "response": {
+        "ok": "boolean",
+        "message": "string"
+      }
+    },
+    "cmd.calib.getState": {
+      "request": {
+        "type": "string"
+      },
+      "response": {
+        "ok": "boolean",
+        "viewRatio": "number",
+        "pixel": "any",
+        "motion": "any",
+        "message": "string"
+      }
+    },
+    "cmd.calib.setViewRatio": {
+      "request": {
+        "type": "string",
+        "viewRatio": "number"
+      },
+      "response": {
+        "ok": "boolean",
+        "message": "string"
+      }
+    },
+    "cmd.calib.pickCenter": {
+      "request": {
+        "type": "string",
+        "pixel": "any"
+      },
+      "response": {
+        "ok": "boolean",
+        "pixel": "any",
+        "motion": "any",
+        "message": "string"
+      }
+    },
+    "cmd.calib.apply": {
+      "request": {
+        "type": "string"
+      },
+      "response": {
+        "ok": "boolean",
+        "message": "string"
+      }
+    },
+    "cmd.calib.save": {
+      "request": {},
+      "response": {
+        "ok": "boolean",
+        "message": "string"
+      }
+    },
+    "cmd.light.get_config": {
+      "request": {},
+      "response": {
+        "ok": "boolean",
+        "mode": "number",
+        "scanner": "number[]",
+        "object20": "number[]",
+        "object50": "number[]"
+      }
+    },
+    "cmd.light.set_val": {
+      "request": {
+        "profile": "string",
+        "ch": "number",
+        "val": "number"
+      },
+      "response": {
+        "ok": "boolean",
+        "message": "string"
+      }
+    },
+    "cmd.light.set_mode": {
+      "request": {
+        "mode": "string"
+      },
+      "response": {
+        "ok": "boolean",
+        "message": "string"
+      }
+    },
+    "cmd.light.save": {
+      "request": {},
+      "response": {
+        "ok": "boolean",
+        "message": "string"
+      }
+    },
+    "cmd.recipe.center.save": {
+      "request": {
+        "data": "string"
+      },
+      "response": {
+        "ok": "boolean",
+        "message": "string"
+      }
+    },
+    "cmd.recipe.center.load": {
+      "request": {},
+      "response": {
+        "ok": "boolean",
+        "data": "string",
+        "message": "string"
+      }
+    },
+    "cmd.presetLibrary.save": {
+      "request": {
+        "data": "string"
+      },
+      "response": {
+        "ok": "boolean",
+        "message": "string"
+      }
+    },
+    "cmd.presetLibrary.load": {
+      "request": {},
+      "response": {
+        "ok": "boolean",
+        "data": "string",
+        "message": "string"
+      }
+    }
+  }
+}

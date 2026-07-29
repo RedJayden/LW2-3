@@ -1,0 +1,15 @@
+{
+   "bXAxisN": false,
+   "bXYExchange": false,
+   "bYAxisN": false,
+   "cardNo": 1,
+   "correctionFile": "Cor_1to1.ct5",
+   "jumpSpeed": 3000.0,
+   "kFactor": 0.0,
+   "laserControl": 2,
+   "laserMode": 1,
+   "markSpeed": 1000.0,
+   "programFile": "RTC6OUT.out",
+   "rtcVersion": 6,
+   "workSize": 110.0
+}

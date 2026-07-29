@@ -1,0 +1,1 @@
+import{y as i}from"./libs-DBeBaDTm.js";import"./vendor-B-OgD5aO.js";import"./ui-framework-Ct18Nptr.js";import"./graphics-libs-CwJq0qY1.js";import"./importFile-CJTC-ao4.js";import{t as e}from"./CameraView-FHqusQED.js";var r=i();function p(){return(0,r.jsx)("div",{className:"h-full min-h-0 overflow-hidden",children:(0,r.jsx)(e,{})})}export{p as default};

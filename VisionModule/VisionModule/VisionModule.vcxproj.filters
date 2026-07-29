@@ -1,0 +1,198 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="소스 파일">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="헤더 파일">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="리소스 파일">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Device">
+      <UniqueIdentifier>{17d2dfb9-a4d3-43f7-8311-f1701f473bb0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Device\Hikrobot">
+      <UniqueIdentifier>{033177fd-99ef-47e4-a0f9-62302b55680e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Device\Hikrobot\include">
+      <UniqueIdentifier>{61c3c959-bbc1-48ad-a8ff-ecfba3ddc5ea}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Util">
+      <UniqueIdentifier>{22223c53-9bb2-4f49-a31f-f128e6d06e7b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Util\OpenCV">
+      <UniqueIdentifier>{563458f4-c53b-4f4e-bdc1-c9ab746de6c4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Device\Hikrobot\Wrapper">
+      <UniqueIdentifier>{22ef6dc4-cfe2-4828-9174-b2c84502e120}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Interface">
+      <UniqueIdentifier>{c8d2bf49-e414-4c95-b660-8419f75f3c8c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UI">
+      <UniqueIdentifier>{00c2053d-dd4b-4eec-b171-bef60098e20d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Core">
+      <UniqueIdentifier>{ec0f54e6-cdda-44db-b83d-c55daa4530f3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Export">
+      <UniqueIdentifier>{9b0bc921-f606-40d4-9e35-b718207cb13f}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="framework.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="targetver.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Resource.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="pch.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Device\Hikrobot\include\CameraParams.h">
+      <Filter>Device\Hikrobot\include</Filter>
+    </ClInclude>
+    <ClInclude Include="Device\Hikrobot\include\MvCameraControl.h">
+      <Filter>Device\Hikrobot\include</Filter>
+    </ClInclude>
+    <ClInclude Include="Device\Hikrobot\include\MvErrorDefine.h">
+      <Filter>Device\Hikrobot\include</Filter>
+    </ClInclude>
+    <ClInclude Include="Device\Hikrobot\include\MvISPErrorDefine.h">
+      <Filter>Device\Hikrobot\include</Filter>
+    </ClInclude>
+    <ClInclude Include="Device\Hikrobot\include\MvObsoleteInterfaces.h">
+      <Filter>Device\Hikrobot\include</Filter>
+    </ClInclude>
+    <ClInclude Include="Device\Hikrobot\include\MvSdkExport.h">
+      <Filter>Device\Hikrobot\include</Filter>
+    </ClInclude>
+    <ClInclude Include="Device\Hikrobot\include\ObsoleteCamParams.h">
+      <Filter>Device\Hikrobot\include</Filter>
+    </ClInclude>
+    <ClInclude Include="Device\Hikrobot\include\PixelType.h">
+      <Filter>Device\Hikrobot\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Util\OpenCV\CvDraw.h">
+      <Filter>Util\OpenCV</Filter>
+    </ClInclude>
+    <ClInclude Include="Device\Hikrobot\Wrapper\HikCamWrapper.h">
+      <Filter>Device\Hikrobot\Wrapper</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Util\AnsiWide.h">
+      <Filter>Util</Filter>
+    </ClInclude>
+    <ClInclude Include="Device\Hikrobot\Wrapper\FrameQueue.h">
+      <Filter>Device\Hikrobot\Wrapper</Filter>
+    </ClInclude>
+    <ClInclude Include="UI\CCamView.h">
+      <Filter>UI</Filter>
+    </ClInclude>
+    <ClInclude Include="UI\VisionModuleDlg.h">
+      <Filter>UI</Filter>
+    </ClInclude>
+    <ClInclude Include="Interface\IVisionModule.h">
+      <Filter>Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="Interface\VisionEnums.h">
+      <Filter>Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="Interface\VisionModuleExport.h">
+      <Filter>Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="Interface\VisionTypes.h">
+      <Filter>Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\DriverFactory.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\FrameBuffer.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\HikDriver.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\ICamDriver.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\VisionModuleImpl.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\VM_Logger.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\BaslerDriver.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\DeviceRegistry.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="VisionModule.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="pch.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Device\Hikrobot\Wrapper\HikCamWrapper.cpp">
+      <Filter>Device\Hikrobot\Wrapper</Filter>
+    </ClCompile>
+    <ClCompile Include="UI\CCamView.cpp">
+      <Filter>UI</Filter>
+    </ClCompile>
+    <ClCompile Include="UI\VisionModuleDlg.cpp">
+      <Filter>UI</Filter>
+    </ClCompile>
+    <ClCompile Include="Export\VisionModuleExport.cpp">
+      <Filter>Export</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\DriverFactory.cpp">
+      <Filter>Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\FrameBuffer.cpp">
+      <Filter>Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\HikDriver.cpp">
+      <Filter>Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\VisionModuleImpl.cpp">
+      <Filter>Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\VM_Logger.cpp">
+      <Filter>Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\BaslerDriver.cpp">
+      <Filter>Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\DeviceRegistry.cpp">
+      <Filter>Core</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="VisionModule.rc">
+      <Filter>리소스 파일</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="res\VisionModule.rc2">
+      <Filter>리소스 파일</Filter>
+    </None>
+    <None Include="Interface\README.md">
+      <Filter>Interface</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="res\VisionModule.ico">
+      <Filter>리소스 파일</Filter>
+    </Image>
+  </ItemGroup>
+</Project>

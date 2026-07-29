@@ -1,0 +1,14 @@
+{
+   "bXAxisN": true,
+   "bXYExchange": true,
+   "bYAxisN": true,
+   "barrelDistortionX": 0.1,
+   "barrelDistortionY": 0.0108,
+   "hRatio": 1.286449,
+   "parallelogramDistortionX": 0.0,
+   "parallelogramDistortionY": 0.0,
+   "trapezoidalDistortionX": 0.0,
+   "trapezoidalDistortionY": 0.0,
+   "vRatio": 1.286449,
+   "workSize": 110.0
+}

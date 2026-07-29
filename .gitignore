@@ -1,0 +1,11 @@
+node_modules/
+
+# ─────────────────────────────────────────────────────────────
+# 대용량 서드파티 SDK / 바이너리 (Git 추적 제외)
+# 팀원 세팅 방법은 docs/EXTERNAL_DEPENDENCIES.md 참고
+# ─────────────────────────────────────────────────────────────
+external/cef/
+VisionModule/FeatureLibrary/OpenCV/
+
+# Claude Code 로컬 설정 (개인별)
+.claude/settings.local.json

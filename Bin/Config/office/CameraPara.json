@@ -1,0 +1,58 @@
+{
+   "data": {
+      "cameras": [ {
+         "centerOffset": {
+            "x": 1653.687373445378,
+            "y": 1008.8317203361341
+         },
+         "device_id": "24815570",
+         "flip_dir": 0,
+         "id": 1,
+         "image_size": 12582912,
+         "name": "Scanner",
+         "pixel_size": 3.45,
+         "presets": [ {
+            "exposure_time": 20000,
+            "gain": 24,
+            "magnification": 20
+         }, {
+            "exposure_time": 5000,
+            "gain": 0,
+            "magnification": 50
+         } ],
+         "resolution": {
+            "depth": 8,
+            "height": 2048,
+            "width": 2448
+         },
+         "type": "POE_COLOR",
+         "used": true,
+         "vendor": "HikRobot"
+      }, {
+         "device_id": "DA4800795",
+         "flip_dir": 0,
+         "id": 2,
+         "image_size": 12288000,
+         "name": "Object",
+         "pixel_size": 3.45,
+         "presets": [ {
+            "exposure_time": 5000,
+            "gain": 0,
+            "magnification": 20
+         }, {
+            "exposure_time": 5500,
+            "gain": 10,
+            "magnification": 50
+         } ],
+         "resolution": {
+            "depth": 8,
+            "height": 2048,
+            "width": 2448
+         },
+         "type": "POE_MONO",
+         "used": true,
+         "vendor": "BASLER"
+      } ],
+      "system_version": "1.0"
+   }
+}

@@ -1,0 +1,49 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        // ----------------------------------------------------------------
+        // 시나리오 1: 프론트엔드 단독 개발 (Hot Reloading 사용)
+        // -> npm run dev 실행 후 Chrome을 띄움
+        // ----------------------------------------------------------------
+        {
+            "name": "1. Frontend Dev Mode (localhost:5173)",
+            "type": "chrome",
+            "request": "launch",
+            "url": "http://localhost:5173",
+            "webRoot": "${workspaceFolder}/Portal",
+            // tasks.json에 정의된 개발 서버 실행 작업 (기존 유지)
+            "preLaunchTask": "vite-dev-server",
+            "sourceMaps": true,
+            "sourceMapPathOverrides": {
+                "webpack:///./*": "${webRoot}/*",
+                "/src/*": "${webRoot}/src/*"
+            }
+        },
+        // ----------------------------------------------------------------
+        // 시나리오 2: 백엔드(C++/CEF) 연동 디버깅 (Build 파일 사용)
+        // -> 이미 실행 중인 C++ 앱에 VS Code가 "달라붙는(Attach)" 방식
+        // ----------------------------------------------------------------
+        {
+            "name": "2. Native CEF Attach (Build)",
+            "type": "chrome",
+            "request": "attach",
+            "port": 9222,
+            "webRoot": "${workspaceFolder}/Portal",
+            // [중요] C++ 앱이 로드하는 실제 주소 패턴 (file://.../index.html)을 잡아냅니다.
+            "urlFilter": "*index.html*",
+            "sourceMaps": true,
+            "sourceMapPathOverrides": {
+                // 1. Vite 표준 매핑
+                "webpack:///./src/*": "${webRoot}/src/*",
+                // 2. 절대 경로 매핑 (C++ 앱이 D드라이브 절대 경로로 실행되므로 필수)
+                "file:///*/src/*": "${webRoot}/src/*",
+                // 3. 빌드 경로 역추적 매핑 (Bin/web 에서 Portal/src 로 가는 길)
+                "../../src/*": "${webRoot}/src/*",
+                "../../../src/*": "${webRoot}/src/*",
+                // 4. 만능 매핑 (위 설정들이 다 실패할 경우 시도)
+                "webpack:///*": "*",
+                "file:///*": "${webRoot}/*"
+            }
+        }
+    ]
+}

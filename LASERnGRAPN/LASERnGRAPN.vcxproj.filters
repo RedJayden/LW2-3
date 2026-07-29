@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="app_main_win.cpp" />
+    <ClCompile Include="Core\AppInitial\AppBootstrap.cpp" />
+    <ClCompile Include="Core\AppInitial\AppConfig.cpp" />
+    <ClCompile Include="Core\AppInitial\BuildPortalUrl.cpp" />
+    <ClCompile Include="Core\AppInitial\DevtoolsKeyBlocker.cpp" />
+    <ClCompile Include="Core\AppInitial\WindowFactory.cpp" />
+    <ClCompile Include="Core\AppInitial\WindowStyleUtil.cpp" />
+    <ClCompile Include="Core\Communication\PortalRouterHandler.cpp" />
+    <ClCompile Include="Core\Device\GCodeService.cpp" />
+    <ClCompile Include="Core\Services\HwInitService.cpp" />
+    <ClCompile Include="Modules\Motor\Base\Motor.cpp" />
+    <ClCompile Include="Modules\Motor\GCode\GCode.cpp" />
+    <ClCompile Include="Modules\Motor\Moons%27\include\SCLLibHelper.cpp" />
+    <ClCompile Include="Modules\Motor\Moons%27\MoonsMotor.cpp" />
+    <ClCompile Include="Modules\Motor\PMAC\PMACMotor.cpp" />
+    <ClCompile Include="Modules\Motor\PMAC\Power_PMAC\Include\PMAC.cpp" />
+    <ClCompile Include="Modules\Vision\CameraCfg\CameraConfig.cpp" />
+    <ClCompile Include="Modules\Vision\CalibVision\CalibVision.cpp" />
+    <ClCompile Include="Modules\Vision\VisionBridge\MjpegFeederFromVision.cpp" />
+    <ClCompile Include="Modules\Vision\VisionBridge\VisionBridge.cpp" />
+    <ClCompile Include="Modules\Vision\VisionBridge\VisionModuleLoader.cpp" />
+    <ClCompile Include="Modules\Vision\VisionBridge\VisionTester.cpp" />
+    <ClCompile Include="Native\ui\cef\AppSchemeFactory.cpp" />
+    <ClCompile Include="Native\ui\cef\CefInit.cpp" />
+    <ClCompile Include="Native\ui\cef\handlers\CameraResourceHandler.cpp" />
+    <ClCompile Include="Native\ui\cef\HttpResponseUtil.cpp" />
+    <ClCompile Include="Native\ui\cef\LatestFrameStore.cpp" />
+    <ClCompile Include="pch.cpp" />
+    <ClCompile Include="Shared\FileDir\FolderUtil.cpp" />
+    <ClCompile Include="Shared\Util\FileSystemUtil.cpp" />
+    <ClCompile Include="Shared\Util\IniFile.cpp" />
+    <ClCompile Include="Shared\Util\Invoke\Invoke.cpp" />
+    <ClCompile Include="Shared\Util\Invoke\InvokeMap.cpp" />
+    <ClCompile Include="Shared\Util\Invoke\JobEvent.cpp" />
+    <ClCompile Include="Shared\Util\MemoryUtil.cpp" />
+    <ClCompile Include="Shared\Util\MinidumpHelp.cpp" />
+    <ClCompile Include="Shared\Util\NetworkUtil.cpp" />
+    <ClCompile Include="Shared\Util\Serial.cpp" />
+    <ClCompile Include="Shared\Util\StringUtil.cpp" />
+    <ClCompile Include="Shared\Util\SystemUtil.cpp" />
+    <ClCompile Include="Shared\Util\Thread.cpp" />
+    <ClCompile Include="Shared\Util\TimeUtil.cpp" />
+    <ClCompile Include="Shared\Util\ValueEncode.cpp" />
+    <ClCompile Include="simple_app.cpp" />
+    <ClCompile Include="simple_handler.cpp" />
+    <ClCompile Include="simple_handler_win.cc" />
+    <ClCompile Include="Modules\Scanner\SinoGalvo\JhcLib.cpp" />
+    <ClCompile Include="Modules\Scanner\SinoGalvo\Base\SinoGalvoController.cpp" />
+    <ClCompile Include="Modules\Scanner\ScanLab\Base\ScanlabController.cpp" />
+    <ClCompile Include="Modules\Scanner\ScanLab\Driver\Rtc6Driver.cpp" />
+    <ClCompile Include="Modules\Laser\JPT\JPTLaser.cpp" />
+    <ClCompile Include="Modules\IO_Control\LFINE\LCP1250H.cpp" />
+    <ClCompile Include="Modules\IO_Control\LightController.cpp" />
+    <ClCompile Include="Modules\Motor\EqMotionRunPara.cpp" />
+    <ClCompile Include="Modules\Motor\Moons%27\MoonsConfigService.cpp" />
+    <ClCompile Include="Shared\Util\LogManager.cpp" />
+    <ClCompile Include="Shared\Util\Log.cpp" />
+    <ClCompile Include="Modules\Laser\Aurelia\AureliaIR50.cpp" />
+    <ClCompile Include="Modules\Laser\Aurelia\AureliaController.cpp" />
+    <ClCompile Include="Modules\Motor\Fastech\FastechMotor.cpp" />
+    <ClCompile Include="Modules\IO_Control\ZeroG\ZeroG.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Core\AppInitial\AppBootstrap.h" />
+    <ClInclude Include="Core\AppInitial\AppConfig.h" />
+    <ClInclude Include="Core\AppInitial\BuildPortalUrl.h" />
+    <ClInclude Include="Core\AppInitial\DevtoolsKeyBlocker.h" />
+    <ClInclude Include="Core\AppInitial\WindowFactory.h" />
+    <ClInclude Include="Core\AppInitial\WindowStyleUtil.h" />
+    <ClInclude Include="Core\Communication\PortalRouterHandler.h" />
+    <ClInclude Include="Core\Device\GCodeService.h" />
+    <ClInclude Include="Core\Services\HwInitService.h" />
+    <ClInclude Include="Modules\Motor\Base\Motor.h" />
+    <ClInclude Include="Modules\Motor\Base\MotorBase.h" />
+    <ClInclude Include="Modules\Motor\GCode\GCode.h" />
+    <ClInclude Include="Modules\Motor\Moons%27\include\SCLLibHelper.h" />
+    <ClInclude Include="Modules\Motor\Moons%27\MoonsMotor.h" />
+    <ClInclude Include="Modules\Motor\PMAC\PMACMotor.h" />
+    <ClInclude Include="Modules\Motor\PMAC\Power_PMAC\Include\PMAC.h" />
+    <ClInclude Include="Modules\Motor\PMAC\Power_PMAC\Include\PowerPmac.h" />
+    <ClInclude Include="Modules\Motor\PMAC\Power_PMAC\Include\PowerPmacDef.h" />
+    <ClInclude Include="Modules\Motor\UnitConvert\UnitConvertUtil.h" />
+    <ClInclude Include="Modules\Vision\CameraCfg\CameraConfig.h" />
+    <ClInclude Include="Modules\Vision\CalibVision\CalibVision.h" />
+    <ClInclude Include="Modules\Vision\VisionBridge\MjpegFeederFromVision.h" />
+    <ClInclude Include="Modules\Vision\VisionBridge\VisionBridge.h" />
+    <ClInclude Include="Modules\Vision\VisionBridge\VisionModuleLoader.h" />
+    <ClInclude Include="Modules\Vision\VisionBridge\VisionTester.h" />
+    <ClInclude Include="Native\ui\cef\AppSchemeFactory.h" />
+    <ClInclude Include="Native\ui\cef\CefInit.h" />
+    <ClInclude Include="Native\ui\cef\CefLog.h" />
+    <ClInclude Include="Native\ui\cef\handlers\CameraResourceHandler.h" />
+    <ClInclude Include="Native\ui\cef\HttpResponseUtil.h" />
+    <ClInclude Include="Native\ui\cef\LatestFrameStore.h" />
+    <ClInclude Include="render_app.h" />
+    <ClInclude Include="resource.h" />
+    <ClInclude Include="Shared\FileDir\FolderUtil.h" />
+    <ClInclude Include="Shared\Util\Color.h" />
+    <ClInclude Include="Shared\Util\FileSystemUtil.h" />
+    <ClInclude Include="Shared\Util\HighOrderContainer.h" />
+    <ClInclude Include="Shared\Util\IniFile.h" />
+    <ClInclude Include="Shared\Util\Invoke\Invoke.h" />
+    <ClInclude Include="Shared\Util\Invoke\InvokeMap.h" />
+    <ClInclude Include="Shared\Util\Invoke\JobEvent.h" />
+    <ClInclude Include="Shared\Util\MemoryUtil.h" />
+    <ClInclude Include="Shared\Util\MinidumpHelp.h" />
+    <ClInclude Include="Shared\Util\NetworkUtil.h" />
+    <ClInclude Include="Shared\Util\Serial.h" />
+    <ClInclude Include="Shared\Util\StringUtil.h" />
+    <ClInclude Include="Shared\Util\SyncContainer.h" />
+    <ClInclude Include="Shared\Util\SyncObject.h" />
+    <ClInclude Include="Shared\Util\SystemUtil.h" />
+    <ClInclude Include="Shared\Util\Thread.h" />
+    <ClInclude Include="Shared\Util\TimeUtil.h" />
+    <ClInclude Include="Shared\Util\UtilCommon.h" />
+    <ClInclude Include="Shared\Util\ValueEncode.h" />
+    <ClInclude Include="simple_app.h" />
+    <ClInclude Include="simple_handler.h" />
+    <ClInclude Include="pch.h" />
+    <ClInclude Include="Modules\Scanner\SinoGalvo\JhcLib.h" />
+    <ClInclude Include="Modules\Scanner\SinoGalvo\Base\SinoGalvoController.h" />
+    <ClInclude Include="Modules\Scanner\IScannerController.h" />
+    <ClInclude Include="Modules\Scanner\ScanLab\Base\ScanlabController.h" />
+    <ClInclude Include="Modules\Scanner\ScanLab\Driver\IRtcDriver.h" />
+    <ClInclude Include="Modules\Scanner\ScanLab\Driver\RtcDriverFactory.h" />
+    <ClInclude Include="Modules\Scanner\ScanLab\Driver\Rtc6Driver.h" />
+    <ClInclude Include="Modules\Laser\JPT\JPTLaser.h" />
+    <ClInclude Include="Modules\IO_Control\LFINE\LCP1250H.h" />
+    <ClInclude Include="Modules\IO_Control\LightController.h" />
+    <ClInclude Include="Modules\Motor\EqMotionRunPara.h" />
+    <ClInclude Include="Modules\Motor\Moons%27\MoonsConfigService.h" />
+    <ClInclude Include="Shared\Util\LogManager.h" />
+    <ClInclude Include="Shared\Util\Log.h" />
+    <ClInclude Include="Modules\Laser\Aurelia\AureliaIR50.h" />
+    <ClInclude Include="Modules\Laser\Aurelia\AureliaController.h" />
+    <ClInclude Include="Modules\Motor\Fastech\FastechMotor.h" />
+    <ClInclude Include="Modules\IO_Control\ZeroG\ZeroG.h" />
+    <ClInclude Include="Modules\Motor\TestMotor\TestMotor.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="LASERnGRAPN.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="res\Laserngrapn.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="Core\Communication\프론트엔드와의 IPC 통신.txt" />
+    <Text Include="Core\DataLogger\장비 상태 및 데이터 로깅.txt" />
+    <Text Include="Core\Device\장비 통신 드라이버(모션, 조명,센서).txt" />
+    <Text Include="Core\RecipeManager\공정 레시피 관리.txt" />
+    <Text Include="Core\StateMachine\장비 동작 상태 관리(Idle,Run,Error).txt" />
+    <Text Include="Modules\IO_Control\IO 제어 모듈.txt" />
+    <Text Include="Modules\Safety\안전 관련 로직.txt" />
+    <Text Include="Modules\Vision\비전 시스템 연동.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\Bin\Config\machine.ini" />
+  </ItemGroup>
+</Project>

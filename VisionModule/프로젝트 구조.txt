@@ -1,0 +1,131 @@
+VisionModule/
+│
+├─ VisionModule.vcxproj
+├─ VisionModule.def                       ← (선택) 내보내기 정의 (필요 시)
+├─ precompiled.h / pch.cpp                ← 공통 헤더
+│
+├─ Interface/                             ← 🔹 외부 공개 API (LASERnGRAPN, Portal이 포함)
+│   ├─ IVisionModule.h                    ← C API (extern "C")
+│   ├─ VisionModuleExport.h               ← __declspec(dllexport / dllimport)
+│   ├─ VisionTypes.h                      ← 프레임, 포맷, 구조체 정의
+│   ├─ VisionEnums.h                      ← (옵션) 향후 에러코드/이벤트코드 정의
+│   └─ README.md                          ← API 개요 / 버전 기록
+│
+├─ Core/                                  ← 🔹 내부 엔진 (UI 비의존)
+│   ├─ VisionModuleImpl.h/.cpp            ← Pimpl 구현체 (핸들, 콜백, PopLatest)
+│   ├─ ICamDriver.h                       ← 카메라 드라이버 공통 인터페이스 (Strategy)
+│   ├─ HikDriver.cpp/.h                   ← HikRobot 전용 드라이버 (MVS SDK 기반)
+│   ├─ BaslerDriver.cpp/.h                ← (옵션) Basler용 확장
+│   ├─ DriverFactory.cpp/.h               ← 벤더별 드라이버 생성 팩토리
+│   ├─ FrameBuffer.h/.cpp                 ← RingBuffer / MutexBuffer / FPS 측정 등
+│   ├─ VM_Logger.h/.cpp                   ← 내부 로그 (LogCallback 브릿지)
+│   └─ Utility/                           ← (보조 클래스)
+│       ├─ Timer.h/.cpp                   ← FPS 측정용
+│       └─ ConvertUtil.h/.cpp             ← MVS→OpenCV/BGR 변환 등
+│
+├─ Export/                                ← 🔹 DLL 진입점 (C API)
+│   ├─ VisionModuleExport.cpp             ← IVisionModule 함수 구현 (Facade)
+│   └─ VisionModule.rc                    ← 리소스(버전정보)
+│
+├─ UI/                                    ← 🔹 exe 빌드 전용 (VISIONMODULE_APP)
+│   ├─ CVisionModuleDlg.h/.cpp            ← 카메라 제어/미리보기 UI
+│   ├─ CCamView.h/.cpp                    ← 영상 표시 컨트롤
+│   ├─ Resource.h / VisionModule.rc       ← 리소스 정의
+│   └─ res/                               ← 아이콘, 비트맵 등
+│
+├─ FeatureLibrary/                        ← 🔹 외부 라이브러리/서드파티
+│   ├─ OpenCV/
+│   │   └─ build/x64/vc16/bin/
+│   │       ├─ opencv_world4120.dll
+│   │       └─ opencv_world4120d.dll
+│   └─ HikRobot/
+│       ├─ MvCameraControl.h
+│       ├─ MvSDK.dll
+│       └─ ...
+│
+├─ Config/                                ← (옵션) INI / JSON 설정
+│   ├─ camera_config.ini
+│   └─ system_config.ini
+│
+└─ Tests/                                 ← (선택) 유닛/통합 테스트
+    ├─ Test_CameraEnum.cpp
+    ├─ Test_FrameRate.cpp
+    └─ ...
+
+
+
+원하신다면 제가 Visual Studio에서 “**VisionModule → LatestFrameStore → CameraResourceHandler → Portal**” 까지
+ JPEG 데이터가 흘러가는 **전체 경로(시퀀스 다이어그램)** 를 그려드릴 수도 있습니다.
+ 그걸 보시면 “어디서 Set되고 어디서 Get되는지” 한눈에 파악 가능합니다. 그거 원하시나요?
+
+좋습니다. VisionModule → LatestFrameStore → CEF(AppScheme/ResourceHandler) → Portal(React) 로 흐르는 시퀀스 다이어그램과 구성도를 그려드릴게요.
+(아래 Mermaid 코드는 그대로 붙여 넣어 미리보기 가능합니다.)
+
+시퀀스: MJPEG 스트림 (app://camera/stream?id=<0|1|2>)
+sequenceDiagram
+    autonumber
+    participant Cam as Camera Driver(Scanner/Object)
+    participant VM as VisionBridge / CameraManager
+    participant LFS as LatestFrameStore (0/1/2)
+    participant CEF as CameraResourceHandler (/stream)
+    participant Portal as Portal <img src=app://...>
+
+    Cam->>VM: Grab raw frame (BGR/YUV/…)
+    VM->>VM: JPEG encode
+    VM->>LFS: SetJpeg(camId, jpegBytes)  **(FPS 누적/갱신)**
+    Note right of LFS: slots[camId].buf = jpegBytes<br/>slots[camId].fps = frames/sec
+
+    Portal->>CEF: GET app://camera/stream?id=camId
+    CEF->>LFS: GetJpeg(camId)
+    LFS-->>CEF: jpegBytes
+    CEF-->>Portal: multipart/x-mixed-replace; boundary=frame<br/>--frame\r\nContent-Type:image/jpeg…<br/>(jpegBytes)<br/>\r\n--frame…
+    loop 반복 (프레임마다)
+        CEF->>LFS: GetJpeg(camId)
+        LFS-->>CEF: jpegBytes
+        CEF-->>Portal: 다음 파트 전송 (chunk)
+    end
+
+시퀀스: 스냅샷 (app://camera/frame.jpg?id=<id>)
+sequenceDiagram
+    participant Portal as Portal (fetch)
+    participant CEF as CameraResourceHandler (/frame.jpg)
+    participant LFS as LatestFrameStore
+
+    Portal->>CEF: GET app://camera/frame.jpg?id=camId
+    CEF->>LFS: GetJpeg(camId)
+    LFS-->>CEF: jpegBytes
+    CEF-->>Portal: 200 OK + Content-Type:image/jpeg (단발 응답)
+
+시퀀스: FPS (app://camera/fps?id=<id>)
+sequenceDiagram
+    participant Portal as Portal (fetch JSON)
+    participant CEF as CameraResourceHandler (/fps)
+    participant LFS as LatestFrameStore
+
+    Portal->>CEF: GET app://camera/fps?id=camId
+    CEF->>LFS: GetFps(camId)
+    LFS-->>CEF: double fps
+    CEF-->>Portal: 200 OK + {"fps": <value>}
+
+구성(컴포넌트) 다이어그램
+graph LR
+    subgraph Native
+        Cam[Camera Driver<br/>(Basler/HIK/…)]
+        VM[VisionBridge / CameraManager<br/>JPEG encode + push]
+        LFS[(LatestFrameStore<br/>slots[0..2]: buf,fps)]
+        CEF[CEF AppScheme + CameraResourceHandler<br/>/stream, /frame.jpg, /fps]
+    end
+
+    subgraph Portal (React)
+        UI[CameraStream.tsx <img>]
+        FPS[useCameraFps.ts]
+    end
+
+    Cam --> VM --> LFS
+    UI -- GET app://camera/stream?id --> CEF
+    FPS -- GET app://camera/fps?id --> CEF
+    CEF --> LFS
+    CEF -- JPEG/MJPEG/JSON --> UI
+
+
+원하시면 이 다이어그램을 **프로젝트 문서(Markdown)**에 바로 붙일 수 있게 섹션 템플릿도 만들어 드릴게요.

@@ -1,0 +1,76 @@
+channels.schema.json   ← 원본 스키마 (수동 또는 자동 관리)
+        ↓ (codegen script)
+channels.gen.h         ← C++용 자동 생성 헤더 (Portal·Native 공용)
+channels.gen.ts        ← TypeScript용 자동 생성 상수 파일 (Portal용)
+
+🔧 관계 요약
+파일역할사용 위치channels.schema.jsonIPC 채널 목록과 파라미터 타입 정의 (단일 진리 소스, Single Source of Truth)코드 생성기(codegen)가 읽음channels.gen.hC++ Native ↔ Portal 공용 헤더 (Native, CEF, VisionModule 등)Native 쪽 빌드 포함channels.gen.tsPortal(React/TypeScript) 쪽에서 IPC 채널명 자동 완성/타입 보장용Portal 빌드 포함
+
+💡 즉, 동작 흐름은 이렇게 됩니다
+
+
+channels.schema.json 작성/수정
+(여기에 camera.start, camera.stop, camera.setParams 등을 추가)
+
+
+코드 생성기 실행 (npm run gen:ipc 혹은 Python/Node script)
+→ channels.gen.h 와 channels.gen.ts 를 모두 갱신
+
+
+Portal은 import { Channels } from "@/core/ipc/channels.gen"
+Native는 #include "channels.gen.h"
+으로 동일 채널 문자열 사용.
+
+
+
+📘 예시: 카메라 IPC 추가 버전 (schema.json 확장 예)
+{
+  "ipcVersion": "1.1.0",
+  "namespace": "app",
+  "channels": {
+    "cmd.app.quit": { "args": {} },
+    "cmd.app.window.close": { "args": {} },
+    "cmd.app.window.minimize": { "args": {} },
+    "cmd.app.window.maximizeToggle": { "args": {} },
+    "cmd.app.window.drag": { "args": {} },
+    "cmd.app.window.setState": { "args": { "state": "enum:maximized|minimized|restored" } },
+    "cmd.app.openMain": { "args": { "route": "string", "show?": "enum:maximized|restored|normal" } },
+    "cmd.motion.homeAll": { "args": { "timeoutMs?": "number" } },
+    "cmd.motion.jog": {
+      "args": {
+        "axis": "enum:X|Y|Z|A|C",
+        "dir": "enum:+|-",
+        "speed": "number"
+      }
+    },
+    "cmd.camera.start": { "args": { "id": "number", "preview?": "boolean" } },
+    "cmd.camera.stop": { "args": { "id": "number" } },
+    "cmd.camera.setParams": {
+      "args": {
+        "id": "number",
+        "exposure?": "number",
+        "gain?": "number"
+      }
+    },
+    "cmd.camera.getRange": { "args": { "id": "number" } }
+  }
+}
+
+
+⚙️ 이렇게 확장하면 codegen이 자동으로
+channels.gen.h 와 channels.gen.ts 둘 다 동일하게 반영합니다.
+
+
+✅ 정리
+
+
+channels.schema.json = “IPC 채널 정의의 원본 스키마”
+
+
+channels.gen.h, channels.gen.ts = “자동 생성된 코드 결과물”
+
+
+두 파일을 Portal과 Native에서 동일 문자열 기반으로 공유할 수 있게 됩니다.
+
+
+따라서 네이티브와 프런트엔드 간 오타·불일치 없이 완전 동기화가 보장됩니다.

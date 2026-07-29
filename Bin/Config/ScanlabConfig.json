@@ -1,0 +1,16 @@
+{
+   "bXAxisN": false,
+   "bXYExchange": false,
+   "bYAxisN": false,
+   "cardNo": 1,
+   "correctionFile": "Config\\D2_969.ct5",
+   "hRatio": 1.0,
+   "jumpSpeed": 3000.0,
+   "laserControl": 2,
+   "laserMode": 1,
+   "markSpeed": 1.0,
+   "programFile": "RTC6OUT.out",
+   "rtcVersion": 6,
+   "vRatio": 1.0,
+   "wavelength": "UV_355"
+}

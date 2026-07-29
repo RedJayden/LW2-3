@@ -1,0 +1,24 @@
+@file:arch_Aurelia.md
+@file:arch_CanvasProc.md
+@file:feature_Camera.md
+@file:feature_Object.md
+@file:feature_PMAC.md
+@file:feature_Scanlab.md
+@file:feature_Scanner.md
+@file:MachineType.md
+@file:feature_Fastech.md
+멘션 파일 먼저 숙지해줘
+
+지금 까지 내용(계획서 , walkthrough 등)을 정리하여 docs\checkpoints 폴더의 해당하는 md 파일에 내용 업데이트 해줘. 기존 md 파일에 내용중 해당하는 항목은 최신 내용으로 업데이트 해줘
+
+위 내용 분석하고 3인의 전문가가 협의하여 최적의 결과를 토대로 한글로 계획서 작성해서 보여줘
+계획서는 docs\proc 폴더 안에 해당 주제의 제목으로 복사본 저장해줘
+
+4. 코드 가이드 및 절대 엄금 사항 (Anti-Patterns)
+배율 하드코딩 절대 엄금: 소스 코드 전반에 baseScale = 1000과 같이 스캐너 배율을 고정 상수로 사용하는 잔재를 완전히 배제하고, 현재 렌더링 중인 카메라 스케일(activePxPerMm)을 동적으로 참조하십시오.
+
+가공 중 도형 숨김 처리 금지: 가공 상태일 때 진행 상태 파악을 방해하는 visible = false 전환 코드를 작성하지 마십시오. 대신 선택 및 이벤트 속성(selectable = false, evented = false)만 차단하여 마우스 오작동을 방지하는 Read-Only 구조를 유지하십시오.
+
+UI에서의 하드웨어 설정 변경 금지: 프론트엔드 비즈니스 로직 내부에서 직접 하드웨어 설정을 변경하고 저장하는 통신 블록(setMoonsConfig 등)을 추가하지 마십시오.
+
+[지시사항] 위 규칙들과 아키텍처적 인과관계를 완벽하게 숙지하고, 향후 LW23 장비 소프트웨어 관련 코드를 수정하거나 기능을 추가할 때 위 원칙에 부합하는 정밀하고 최적화된 코드 및 아키텍처 가이드를 제공하십시오. 코드의 안정성과 물리 좌표계의 정확성이 최우선입니다

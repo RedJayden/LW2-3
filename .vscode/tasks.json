@@ -1,0 +1,29 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "type": "npm",
+            "script": "dev", // package.json에 정의된 스크립트 이름 (npm run dev)
+            "label": "vite-dev-server", // 이 작업의 이름
+            "isBackground": true, // 서버가 계속 실행되므로 백그라운드로 설정
+            "options": {
+                "cwd": "${workspaceFolder}/Portal" // 중요: package.json이 위치한 폴더 경로 지정
+            },
+            "problemMatcher": {
+                "owner": "custom",
+                "pattern": {
+                    "regexp": "^$"
+                },
+                "background": {
+                    "activeOnStart": true,
+                    "beginsPattern": "VITE", // Vite 실행 시 터미널에 찍히는 로그 패턴
+                    "endsPattern": "Local:" // 이 로그가 보이면 브라우저를 띄움
+                }
+            },
+            "presentation": {
+                "reveal": "always",
+                "panel": "dedicated"
+            }
+        }
+    ]
+}

@@ -1,0 +1,140 @@
+@import "tailwindcss";
+
+@font-face {
+  font-family: 'Digital-7 Mono';
+  src: url('./assets/fonts/digital-7-mono.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+:root {
+  --font-ui: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans",
+    "Helvetica Neue", Arial, "Apple SD Gothic Neo", "Noto Sans KR",
+    "Malgun Gothic", sans-serif;
+  --font-mono: "JetBrains Mono", "IBM Plex Mono", "Fira Mono", ui-monospace,
+    SFMono-Regular, Menlo, monospace;
+  color-scheme: light;
+}
+
+html.dark {
+  color-scheme: dark;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+/* 모든 요소가 픽셀 오차 없이 꽉 차도록 */
+* {
+  box-sizing: border-box;
+}
+
+/* grid 자식이 높이를 버리지 않도록 기본값 보강(선택) */
+#root>div {
+  min-height: 0;
+}
+
+body {
+  font-family: var(--font-ui);
+  background-color: #0B1121;
+  color: #e5e7eb;
+  overflow: hidden;
+}
+
+.mono {
+  font-family: var(--font-mono);
+  letter-spacing: 0.01em;
+}
+
+/* 필요한 영역에서만 .scroll-area에 스크롤 허용 */
+.scroll-area {
+  overflow: auto;
+}
+
+/* (선택) WebKit 스크롤바 감추기 */
+.scroll-area::-webkit-scrollbar {
+  display: none;
+}
+
+/* Global separation between number and spinner */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  margin-left: 12px;
+}
+
+/* Splash → Main 전환 시 페이드 인 애니메이션 */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@layer components {
+    .glass-card {
+        @apply bg-[#1a1f2e90] backdrop-blur-xl border border-white/5 rounded-xl shadow-2xl;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .glass-card-emerald {
+        @apply bg-emerald-950/20 backdrop-blur-xl border border-emerald-500/20 rounded-xl shadow-lg;
+    }
+
+    .glass-card:hover {
+        @apply bg-[#1a1f2eb0] border-white/10 shadow-blue-500/10;
+    }
+
+    .status-indicator {
+        @apply w-2 h-2 rounded-full;
+        box-shadow: 0 0 10px currentColor;
+    }
+
+    .neon-text-emerald {
+        @apply text-emerald-400;
+        text-shadow: 0 0 12px rgba(52, 211, 153, 0.4);
+    }
+
+    .btn-premium-primary {
+        @apply relative overflow-hidden bg-gradient-to-tr from-emerald-600 to-teal-500 hover:from-emerald-500 hover:to-teal-400 text-white font-bold py-3.5 rounded-xl transition-all shadow-lg shadow-emerald-900/40 active:scale-[0.97] uppercase tracking-widest text-xs;
+    }
+    
+    .btn-premium-danger {
+        @apply relative overflow-hidden bg-gradient-to-tr from-rose-600 to-red-500 hover:from-rose-500 hover:to-red-400 text-white font-bold py-3.5 rounded-xl transition-all shadow-lg shadow-rose-900/40 active:scale-[0.97] uppercase tracking-widest text-xs;
+    }
+
+    .btn-premium-warning {
+        @apply relative overflow-hidden bg-gradient-to-tr from-orange-600 to-amber-500 hover:from-orange-500 hover:to-amber-400 text-white font-bold py-3.5 rounded-xl transition-all shadow-lg shadow-orange-900/40 active:scale-[0.97] uppercase tracking-widest text-xs;
+    }
+
+    .premium-scrollbar::-webkit-scrollbar {
+        width: 4px;
+    }
+    .premium-scrollbar::-webkit-scrollbar-thumb {
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 10px;
+    }
+    .premium-scrollbar::-webkit-scrollbar-thumb:hover {
+        background: rgba(255, 255, 255, 0.2);
+    }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.02);
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.2);
+}

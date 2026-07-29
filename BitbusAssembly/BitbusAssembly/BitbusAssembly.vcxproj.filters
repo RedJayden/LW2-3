@@ -1,0 +1,219 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="소스 파일">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="헤더 파일">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="리소스 파일">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Util">
+      <UniqueIdentifier>{e77eac9b-5d8e-4e8a-bcb5-72aa6ac7d885}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Export">
+      <UniqueIdentifier>{418c8978-c7b6-477e-aa5a-ea91ea5a7461}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Impl">
+      <UniqueIdentifier>{d0b6a001-514a-4f60-81d0-15d8da8c7fa0}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="BitbusAssembly.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="BitbusAssemblyDlg.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="framework.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="targetver.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Resource.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="stdafx.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="util\Color.h">
+      <Filter>Util</Filter>
+    </ClInclude>
+    <ClInclude Include="util\ColorStatic.h">
+      <Filter>Util</Filter>
+    </ClInclude>
+    <ClInclude Include="util\FileSystemUtil.h">
+      <Filter>Util</Filter>
+    </ClInclude>
+    <ClInclude Include="util\FolderUtil.h">
+      <Filter>Util</Filter>
+    </ClInclude>
+    <ClInclude Include="util\FontManager.h">
+      <Filter>Util</Filter>
+    </ClInclude>
+    <ClInclude Include="util\HighOrderContainer.h">
+      <Filter>Util</Filter>
+    </ClInclude>
+    <ClInclude Include="util\IniFile.h">
+      <Filter>Util</Filter>
+    </ClInclude>
+    <ClInclude Include="util\Invoke.h">
+      <Filter>Util</Filter>
+    </ClInclude>
+    <ClInclude Include="util\InvokeMap.h">
+      <Filter>Util</Filter>
+    </ClInclude>
+    <ClInclude Include="util\JobEvent.h">
+      <Filter>Util</Filter>
+    </ClInclude>
+    <ClInclude Include="util\Log.h">
+      <Filter>Util</Filter>
+    </ClInclude>
+    <ClInclude Include="util\MemoryUtil.h">
+      <Filter>Util</Filter>
+    </ClInclude>
+    <ClInclude Include="util\MFCCheckButton.h">
+      <Filter>Util</Filter>
+    </ClInclude>
+    <ClInclude Include="util\MinidumpHelp.h">
+      <Filter>Util</Filter>
+    </ClInclude>
+    <ClInclude Include="util\ProcessUtil.h">
+      <Filter>Util</Filter>
+    </ClInclude>
+    <ClInclude Include="util\Serial.h">
+      <Filter>Util</Filter>
+    </ClInclude>
+    <ClInclude Include="util\StringUtil.h">
+      <Filter>Util</Filter>
+    </ClInclude>
+    <ClInclude Include="util\SyncContainer.h">
+      <Filter>Util</Filter>
+    </ClInclude>
+    <ClInclude Include="util\SyncObject.h">
+      <Filter>Util</Filter>
+    </ClInclude>
+    <ClInclude Include="util\SystemUtil.h">
+      <Filter>Util</Filter>
+    </ClInclude>
+    <ClInclude Include="util\Thread.h">
+      <Filter>Util</Filter>
+    </ClInclude>
+    <ClInclude Include="util\TimeUtil.h">
+      <Filter>Util</Filter>
+    </ClInclude>
+    <ClInclude Include="util\UIUtil.h">
+      <Filter>Util</Filter>
+    </ClInclude>
+    <ClInclude Include="util\UtilCommon.h">
+      <Filter>Util</Filter>
+    </ClInclude>
+    <ClInclude Include="util\ValueEncode.h">
+      <Filter>Util</Filter>
+    </ClInclude>
+    <ClInclude Include="util\Singleton.h">
+      <Filter>Util</Filter>
+    </ClInclude>
+    <ClInclude Include="Export\API_Bitbus.h">
+      <Filter>Export</Filter>
+    </ClInclude>
+    <ClInclude Include="Impl\Bitbus_Impl.h">
+      <Filter>Impl</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="BitbusAssembly.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="BitbusAssemblyDlg.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="util\ColorStatic.cpp">
+      <Filter>Util</Filter>
+    </ClCompile>
+    <ClCompile Include="util\FileSystemUtil.cpp">
+      <Filter>Util</Filter>
+    </ClCompile>
+    <ClCompile Include="util\FolderUtil.cpp">
+      <Filter>Util</Filter>
+    </ClCompile>
+    <ClCompile Include="util\FontManager.cpp">
+      <Filter>Util</Filter>
+    </ClCompile>
+    <ClCompile Include="util\IniFile.cpp">
+      <Filter>Util</Filter>
+    </ClCompile>
+    <ClCompile Include="util\Invoke.cpp">
+      <Filter>Util</Filter>
+    </ClCompile>
+    <ClCompile Include="util\InvokeMap.cpp">
+      <Filter>Util</Filter>
+    </ClCompile>
+    <ClCompile Include="util\JobEvent.cpp">
+      <Filter>Util</Filter>
+    </ClCompile>
+    <ClCompile Include="util\Log.cpp">
+      <Filter>Util</Filter>
+    </ClCompile>
+    <ClCompile Include="util\MemoryUtil.cpp">
+      <Filter>Util</Filter>
+    </ClCompile>
+    <ClCompile Include="util\MinidumpHelp.cpp">
+      <Filter>Util</Filter>
+    </ClCompile>
+    <ClCompile Include="util\ProcessUtil.cpp">
+      <Filter>Util</Filter>
+    </ClCompile>
+    <ClCompile Include="util\Serial.cpp">
+      <Filter>Util</Filter>
+    </ClCompile>
+    <ClCompile Include="util\StringUtil.cpp">
+      <Filter>Util</Filter>
+    </ClCompile>
+    <ClCompile Include="util\SystemUtil.cpp">
+      <Filter>Util</Filter>
+    </ClCompile>
+    <ClCompile Include="util\Thread.cpp">
+      <Filter>Util</Filter>
+    </ClCompile>
+    <ClCompile Include="util\TimeUtil.cpp">
+      <Filter>Util</Filter>
+    </ClCompile>
+    <ClCompile Include="util\UIUtil.cpp">
+      <Filter>Util</Filter>
+    </ClCompile>
+    <ClCompile Include="util\ValueEncode.cpp">
+      <Filter>Util</Filter>
+    </ClCompile>
+    <ClCompile Include="Export\API_Bitbus.cpp">
+      <Filter>Export</Filter>
+    </ClCompile>
+    <ClCompile Include="Impl\Bitbus_Impl.cpp">
+      <Filter>Impl</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="BitbusAssembly.rc">
+      <Filter>리소스 파일</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="res\BitbusAssembly.rc2">
+      <Filter>리소스 파일</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="res\BitbusAssembly.ico">
+      <Filter>리소스 파일</Filter>
+    </Image>
+  </ItemGroup>
+</Project>
